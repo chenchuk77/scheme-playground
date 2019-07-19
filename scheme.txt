@@ -1,0 +1,66 @@
+#lang racket
+
+(+ 3 2)
+(- 9 2)
+(sqrt 5)
+;(define print-list (tt) (
+;  (if (empty? tt) (print "empty"))))
+
+;(define pl (lambda (lst) (if (empty? lst) (print "empty") (print "items"))))
+;(define isempty (l) (if (empty? l) (print "empty") (print "not empty")))
+;(define (pl) (lst) (if (empty? lst) (print "empty") (pl (cdr lst))))
+;(if (empty? l) (print "da") (print "nei"))
+
+(define (big? a b) (if (> a b) a b))
+(define bigg? (lambda (a b) (if (> a b) a b)))
+(define (dbl t) (append (reverse t) (reverse t)))
+(define (dbl2 t) (let ((r (reverse t))) (print "ff") (append r r)))
+(define isbig? (lambda (a) (cond ((> a 5) 'big)
+                                 ((> a 3) 'medium)
+                                 (else 'small))))
+; check if element in collection
+(define (in? e c)
+  (if (eq? c '())
+    #f
+    (if (= e (car c))
+      #t
+      (in? e (cdr c)))))
+
+; higher order functions
+; the f body evaluates to a function
+(define (getadder x)
+  (lambda (x) (lambda (y) (+ x y))))
+;(define ad1 (f 1))
+;(ad1 3)
+
+; side effects (people defined in the global env)
+(define people null)
+(define (hello name)
+   (set! people (cons name people))
+   print name)
+;> (hello 'jack)
+;'jack
+;> (hello 'jihn)
+;'jihn
+;> people
+;'(jihn jack)
+ 
+; no state (pure). function always returns the same results
+(define (acc total)
+  (lambda (x) (- total x) ))
+;> (define w (acc 100))
+;> (w 3)
+;97
+
+; local state (2 different bank-account objects
+(define (acc2 total)
+  (let ((amount total))
+    (lambda (x) (set! amount (- amount x) ) amount)))
+;> (define a (acc2 100))
+;> (a 2)
+;98
+;> (a 2)
+;96
+;> (define b (acc2 100))
+;> (b 1)
+;99
