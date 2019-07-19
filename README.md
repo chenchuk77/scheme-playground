@@ -14,6 +14,7 @@ To run playbook
 docker run --name jupyter-scheme -it --rm -p 8888:8888 -v $(readlink -f notebooks):/work kkwok/jupyter-mit-scheme
 ```
 
-Then login to http://localhost:8888 (password will appear in the terminal) and start coding. All notebooks will be saved outside the container at ./notebooks folder.
+Then login to http://localhost:8888 (password will appear in the terminal) and start coding. 
+All notebooks will be saved on the localhost at ./notebooks folder.
 
 
