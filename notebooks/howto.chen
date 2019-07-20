@@ -1,0 +1,7 @@
+    2  pip3 install --upgrade pip==9.0.3
+    3  pip3
+    4  pip install jupyterthemes
+    5  history 
+    6  pip --version
+    7  pip3 --version
+    8  pip3 install jupyterthemes
